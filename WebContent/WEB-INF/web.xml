@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>project2</display-name>
+  
+ <!-- 마리아DB연결
+MariaDB 정보
+Database명 : suamil_db
+아이디 : suamil_user
+패스워드 : 1234
+  -->
+<context-param>
+  	<param-name>MariaJDBCDriver</param-name>
+  	<param-value>org.mariadb.jdbc.Driver</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>MariaConnectURL</param-name>
+  	<param-value>jdbc:mariadb://127.0.0.1:3306/suamil_db</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>MariaUser</param-name>
+  	<param-value>suamil_user</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>MariaPass</param-name>
+  	<param-value>1234</param-value>
+ </context-param>
+ 
+ 
+  <context-param><!-- 한 페이지에 출력할 게시물의 갯수 -->
+  	<param-name>PAGE_SIZE</param-name>
+  	<param-value>5</param-value>
+  </context-param>
+  <context-param><!-- 한 블럭당 출력할 페이지번호의 갯수 -->
+  	<param-name>BLOCK_PAGE</param-name>
+  	<param-value>2</param-value>
+  </context-param>
+  
+  
+	<!-- 1. 서블릿 매핑 -->
+	<servlet>
+		<servlet-name>mainSurvlet</servlet-name>
+		<servlet-class>survlet.mainSurvlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mainSurvlet</servlet-name>
+		<url-pattern>/main/main.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 글쓰기(사진포함) -->
+	<servlet>
+		<servlet-name>photoCtrl</servlet-name>
+		<servlet-class>survlet.photoCtrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>photoCtrl</servlet-name>
+		<url-pattern>/space/photoCtrl</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 리스트 -->
+	<servlet>
+  	<servlet-name>list_ctrl</servlet-name>
+  	<servlet-class>survlet.list_ctrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>list_ctrl</servlet-name>
+  	<url-pattern>/space/list_ctrl</url-pattern>
+  </servlet-mapping>
+	<!-- view -->
+	<servlet>
+		<servlet-name>view_ctrl</servlet-name>
+		<servlet-class>survlet.view_ctrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>view_ctrl</servlet-name>
+		<url-pattern>/space/view_ctrl</url-pattern>
+	</servlet-mapping>
+	<!-- 삭제 -->
+	<servlet>
+		<servlet-name>delete_ctrl</servlet-name>
+		<servlet-class>survlet.delete_ctrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>delete_ctrl</servlet-name>
+		<url-pattern>/space/delete_ctrl</url-pattern>
+	</servlet-mapping>
+	<!-- 수정 -->
+	<servlet>
+		<servlet-name>edit_ctrl</servlet-name>
+		<servlet-class>survlet.edit_ctrl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>edit_ctrl</servlet-name>
+		<url-pattern>/space/edit_ctrl</url-pattern>
+	</servlet-mapping>
+  <!-- 다운로드 -->
+  	<servlet>
+  	<servlet-name>download_ctrl</servlet-name>
+  	<servlet-class>survlet.download_ctrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>download_ctrl</servlet-name>
+  	<url-pattern>/space/download_ctrl</url-pattern>
+  </servlet-mapping>
+  	
+<!-- 	<servlet> -->
+<!--     <servlet-name>mainAdminLogin</servlet-name> -->
+<!--     <servlet-class>adminCtroller.adminCtrl</servlet-class> -->
+<!--   </servlet> -->
+<!--   <servlet-mapping> -->
+<!--     <servlet-name>mainAdminLogin</servlet-name> -->
+<!--     <url-pattern>/admin</url-pattern> -->
+<!--   </servlet-mapping> -->
+
+	<!-- 마켓 리스트 -->
+	<servlet>
+  	<servlet-name>shop_list</servlet-name>
+  	<servlet-class>market.shop_list</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>shop_list</servlet-name>
+  	<url-pattern>/market/shop_list</url-pattern>
+  </servlet-mapping>
+	
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
